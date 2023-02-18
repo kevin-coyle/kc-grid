@@ -2,6 +2,7 @@ import { LitElement, css, unsafeCSS, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { customElement, property } from "lit/decorators.js";
 import styles from "./kc-grid.css";
+import "construct-style-sheets-polyfill";
 @customElement("kc-grid")
 export class KcGrid extends LitElement {
   static styles = css`
@@ -31,10 +32,32 @@ export class KcGrid extends LitElement {
   @property({ type: Boolean })
   debugMode = false;
 
+  private sheet: CSSStyleSheet;
+
+  updated() {
+    this.generateStyles();
+  }
   connectedCallback() {
     super.connectedCallback();
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(`
+    this.sheet = new CSSStyleSheet();
+    this.generateStyles();
+    const shadow = this.shadowRoot;
+    if (shadow) {
+      shadow.adoptedStyleSheets = [this.sheet];
+    }
+  }
+
+  private getClasses = () => {
+    return {
+      "kc-grid": true,
+      [`kc-grid--has-layout-container`]: this.hasLayoutContainer,
+      [`kc-grid--debug`]: this.debugMode,
+      [`kc-grid--${this.variant}`]: true,
+    };
+  };
+
+  private generateStyles() {
+    this.sheet.replaceSync(`
       .kc-grid--has-layout-container{
         width: 100%;
         margin: 0 auto;
@@ -61,22 +84,11 @@ export class KcGrid extends LitElement {
         }
       }
 
-
       .kc-grid--1-3 {
         grid-template-columns: repeat(3, 1fr);
       }
     `);
-    this.shadowRoot?.adoptedStyleSheets?.push(sheet);
   }
-
-  private getClasses = () => {
-    return {
-      "kc-grid": true,
-      [`kc-grid--has-layout-container`]: this.hasLayoutContainer,
-      [`kc-grid--debug`]: this.debugMode,
-      [`kc-grid--${this.variant}`]: true,
-    };
-  };
 
   render() {
     return html`

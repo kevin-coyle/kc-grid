@@ -45,3 +45,29 @@ export const Two: StoryObj = {
       <div>Column 2</div>`,
   },
 };
+
+export const CustomBreakpoints: StoryObj = {
+  name: "Custom Breakpoints",
+  render: (args) => html`<kc-grid
+    ?debugMode="${args.debugMode}"
+    variant=${args.variant}
+    ?hasLayoutContainer=${args.hasLayoutContainer}
+    smallMobileBreakpoint=${args.smallMobileBreakpoint}
+    mobileBreakpoint=${args.mobileBreakpoint}
+    desktopBreakpoint=${args.desktopBreakpoint}
+    largeDesktopBreakpoint=${args.largeDesktopBreakpoint}
+    >${args.children}</kc-grid
+  >`,
+  args: {
+    variant: "1-2",
+    debugMode: false,
+    hasLayoutContainer: true,
+    smallMobileBreakpoint: 300,
+    mobileBreakpoint: 500,
+    desktopBreakpoint: 800,
+    largeDesktopBreakpoint: 1000,
+
+    children: html`<div>Column 1</div>
+      <div>Column 2</div>`,
+  },
+};
