@@ -28,15 +28,59 @@ export class KcGrid extends LitElement {
   @property({ type: Boolean })
   hasLayoutContainer = false;
 
-  private classes = {
-    "kc-grid": true,
-    [`kc-grid--${this.variant}`]: true,
-    "kc-grid--has-layout-container": this.hasLayoutContainer,
+  @property({ type: Boolean })
+  debugMode = false;
+
+  connectedCallback() {
+    super.connectedCallback();
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(`
+      .kc-grid--has-layout-container{
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      @media (min-width: ${this.desktopBreakpoint}px) {
+        .kc-grid--has-layout-container{
+          width: ${this.desktopBreakpoint}px;
+        }
+      }
+
+      @media (min-width: ${this.largeDesktopBreakpoint}px) {
+        .kc-grid--has-layout-container{
+          width: ${this.largeDesktopBreakpoint}px;
+        }
+      }
+      .kc-grid--1 {
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: ${this.desktopBreakpoint}px) {
+        .kc-grid--1-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+
+      .kc-grid--1-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    `);
+    this.shadowRoot?.adoptedStyleSheets?.push(sheet);
+  }
+
+  private getClasses = () => {
+    return {
+      "kc-grid": true,
+      [`kc-grid--has-layout-container`]: this.hasLayoutContainer,
+      [`kc-grid--debug`]: this.debugMode,
+      [`kc-grid--${this.variant}`]: true,
+    };
   };
 
   render() {
     return html`
-      <div class="${classMap(this.classes)}">
+      <div class="${classMap(this.getClasses())}" part="grid">
         <slot></slot>
       </div>
     `;

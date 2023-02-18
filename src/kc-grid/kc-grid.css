@@ -1,3 +1,11 @@
 .kc-grid {
   display: grid;
+  gap: var(--kc-grid-gap, 2rem);
+  max-width: 100%;
+}
+
+.kc-grid--debug ::slotted(*) {
+  outline: 3px dashed green;
+  padding: 2rem;
+  background: salmon;
 }
