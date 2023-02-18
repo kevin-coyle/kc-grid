@@ -1,6 +1,6 @@
 {
   "name": "@kevincoyle/kc-grid",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/kc-grid.js",
   "exports": {
