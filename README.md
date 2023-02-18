@@ -6,6 +6,12 @@ The purpose of this component is to have a really solid reusable grid component 
 
 ### Importing the project
 
+Install the project:
+
+```bash
+npm install -D @kevincoyle/kc-grid
+```
+
 Import the component into your project:
 
 ```javascript
