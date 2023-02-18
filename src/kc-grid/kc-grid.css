@@ -4,8 +4,18 @@
   max-width: 100%;
 }
 
+.kc-grid__wrapper {
+  margin-left: var(--kc-grid-margin-left, 1rem);
+  margin-right: var(--kc-grid-margin-right, 1rem);
+  min-width: 0;
+}
+
 .kc-grid--debug ::slotted(*) {
   outline: 3px dashed green;
   padding: 2rem;
   background: salmon;
+}
+
+kc-grid:not(:defined) {
+  opacity: 0;
 }

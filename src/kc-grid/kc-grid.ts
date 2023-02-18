@@ -102,8 +102,10 @@ export class KcGrid extends LitElement {
 
   render() {
     return html`
-      <div class="${classMap(this.getClasses())}" part="grid">
-        <slot></slot>
+      <div class="kc-grid__wrapper">
+        <div class="${classMap(this.getClasses())}" part="grid">
+          <slot></slot>
+        </div>
       </div>
     `;
   }
