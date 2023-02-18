@@ -66,7 +66,6 @@ export const CustomBreakpoints: StoryObj = {
     mobileBreakpoint: 500,
     desktopBreakpoint: 800,
     largeDesktopBreakpoint: 1000,
-
     children: html`<div>Column 1</div>
       <div>Column 2</div>`,
   },
