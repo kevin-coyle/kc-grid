@@ -16,7 +16,7 @@
     "build": "tsc && vite build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=5d8a98840a30"
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
     "construct-style-sheets-polyfill": "^3.1.0",
