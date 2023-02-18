@@ -10,6 +10,10 @@
   min-width: 0;
 }
 
+::slotted(*) {
+  min-width: 0;
+}
+
 .kc-grid--debug ::slotted(*) {
   outline: 3px dashed green;
   padding: 2rem;
