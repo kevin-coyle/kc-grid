@@ -23,6 +23,17 @@ export const Default: StoryObj = {
   },
 };
 
+export const Two: StoryObj = {
+  name: "Two Columns",
+  args: {
+    variant: "1-2",
+    debugMode: false,
+    hasLayoutContainer: true,
+    children: html`<div>Column 1</div>
+      <div>Column 2</div>`,
+  },
+};
+
 export const ThreeCol: StoryObj = {
   name: "Three Columns",
   args: {
@@ -35,14 +46,16 @@ export const ThreeCol: StoryObj = {
   },
 };
 
-export const Two: StoryObj = {
-  name: "Two Columns",
+export const FourCol: StoryObj = {
+  name: "Four Columns",
   args: {
-    variant: "1-2",
+    variant: "1-4",
     debugMode: false,
     hasLayoutContainer: true,
     children: html`<div>Column 1</div>
-      <div>Column 2</div>`,
+      <div>Column 2</div>
+      <div>Column 3</div>
+      <div>Column 4</div> `,
   },
 };
 

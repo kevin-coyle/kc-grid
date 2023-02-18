@@ -84,9 +84,19 @@ export class KcGrid extends LitElement {
         }
       }
 
-      .kc-grid--1-3 {
-        grid-template-columns: repeat(3, 1fr);
+      @media (min-width: ${this.desktopBreakpoint}px) {
+        .kc-grid--1-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
+
+      @media (min-width: ${this.desktopBreakpoint}px) {
+        .kc-grid--1-4 {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+
     `);
   }
 
