@@ -1,6 +1,5 @@
 {
   "name": "@kevincoyle/kc-grid",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "main": "dist/kc-grid.js",
