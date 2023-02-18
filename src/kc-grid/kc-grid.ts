@@ -43,7 +43,7 @@ export class KcGrid extends LitElement {
     this.generateStyles();
     const shadow = this.shadowRoot;
     if (shadow) {
-      shadow.adoptedStyleSheets = [this.sheet];
+      shadow.adoptedStyleSheets = [...shadow.adoptedStyleSheets, this.sheet];
     }
   }
 
